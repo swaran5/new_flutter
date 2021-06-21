@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:new_flutter/app_screens/first_screen.dart';
+import 'package:new_flutter/app_screens/second_screen.dart';
 
 void main() {
   runApp(new MyFlutterApp());
