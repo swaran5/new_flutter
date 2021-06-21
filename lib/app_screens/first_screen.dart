@@ -6,9 +6,8 @@ class FirstScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
         color: Colors.amber,
-        child: Card(
-          child: getListView(),
-        ));
+        child: getListView(),
+        );
   }
 
   ListView getListView() {
