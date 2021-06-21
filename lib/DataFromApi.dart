@@ -27,9 +27,8 @@ class _DataFromAPIStake extends State{
   Widget build(BuildContext context) {
     return Material(
         color: Colors.amber,
-        child: Card(
-          child: getListView(),
-        ));
+        child: getListView(),
+        );
   }
 
   Widget getListView() {
