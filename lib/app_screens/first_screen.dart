@@ -6,78 +6,74 @@ class FirstScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
         color: Colors.amber,
-        child: getListView(),
+        child: getWidget(),
         );
   }
 
-  ListView getListView() {
-    var items = new List<String>.generate(20, (index) => "Item $index");
-    var listView = ListView.builder(
-        itemCount: items.length,
-        itemBuilder: (context, index) {
-          return getItemView(index);
-        });
-    return listView;
-  }
+   getWidget() {
 
-  Widget getItemView(index) {
-    Widget itemView = Card(
-        shape:
-            RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
-        elevation: 6.0,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Expanded(
-              flex: 3,
-              child: Container(
-                height: 150,
-                width: 120,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20.0),
-                    topRight: Radius.circular(0),
-                    bottomLeft: Radius.circular(20.0),
-                    bottomRight: Radius.circular(0),
-                  ),
-                  child: Image(
-                    fit: BoxFit.fill,
-                    alignment: Alignment.centerLeft,
-                    image: AssetImage("images/item2.jpg"),
+    return Column(
+      children: [
+        Expanded(
+          flex: 2,
+            child:  Container(
+              color: Colors.blue,
+            ),
+        ),
+        Expanded(
+          flex: 4,
+          child:  Container(
+            color: Colors.red,
+            child: Row(
+              children: [
+                Expanded(
+                  flex: 1,
+                    child: Container(
+                      color: Colors.black,
+                    ),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: Container(
+                    color: Colors.yellow,
+                    child: Column(
+                      children: [
+                        Expanded(
+                          flex: 4,
+                            child: Container(
+                              color: Colors.white,
+                            )
+                        ),
+                        Expanded(
+                          flex: 6,
+                            child: Container(
+                              color: Colors.yellow,
+                            )
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
+              ],
             ),
-            Expanded(
-              flex: 7,
-              child: Container(
-                  child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Container(
-                      width: double.infinity,
-                      height: 75,
-                      child: Align(
-                          alignment: Alignment.centerLeft,
-                          child: Text(
-                            "First Name $index",
-                            style: TextStyle(color: Colors.black, fontSize: 30),
-                          ))),
-                  Container(
-                      width: double.infinity,
-                      height: 75,
-                      child: Align(
-                          alignment: Alignment.topLeft,
-                          child: Text(
-                            "Last Name $index",
-                            style: TextStyle(color: Colors.black, fontSize: 30),
-                          ))),
-                ],
-              )),
-            ),
-          ],
-        ));
-    return itemView;
+          ),
+        ),  Expanded(
+          flex: 4,
+          child:  Container(
+            color: Colors.blue,
+          ),
+        ),
+        // Container(
+        //   height: 100,
+        //   width: 100,
+        //   color: Colors.red,
+        // ),
+        // Container(
+        //   height: 100,
+        //   width: 100,
+        //   color: Colors.blue,
+        // ),
+      ],
+    );
   }
 }

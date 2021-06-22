@@ -19,7 +19,7 @@ class MyFlutterApp extends StatelessWidget {
             title: Text("First Screen"),
             backgroundColor: Colors.red,
           ),
-          body: new DataFromApi()
+          body: new FirstScreen()
         ));
   }
 }
