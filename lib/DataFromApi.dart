@@ -69,7 +69,7 @@ class _DataFromAPIStake extends State{
             Expanded(
               flex: 3,
               child: Container(
-                height: 150,
+                height: 120,
                 child: ClipRRect(
                   borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(20.0),
@@ -96,7 +96,7 @@ class _DataFromAPIStake extends State{
 
                       Container(
                           width: double.infinity,
-                          height: 75,
+                          height: 60,
                           child: Align(
                               alignment: Alignment.centerLeft,
                               child: Text(
@@ -105,7 +105,7 @@ class _DataFromAPIStake extends State{
                               ))),
                       Container(
                           width: double.infinity,
-                          height: 75,
+                          height: 60,
                           child: Align(
                               alignment: Alignment.topLeft,
                               child: Text(

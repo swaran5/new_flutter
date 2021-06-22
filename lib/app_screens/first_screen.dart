@@ -5,32 +5,29 @@ class FirstScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-        color: Colors.amber,
-        child: getWidget(),
-        );
+      color: Colors.amber,
+      child: getWidget(),
+    );
   }
 
-   getWidget() {
-
+  getWidget() {
     return Column(
       children: [
         Expanded(
-          flex: 2,
-            child:  Container(
-              color: Colors.blue,
-            ),
+          flex: 3,
+          child: getCardView()
         ),
         Expanded(
-          flex: 4,
-          child:  Container(
+          flex: 3,
+          child: Container(
             color: Colors.red,
             child: Row(
               children: [
                 Expanded(
                   flex: 1,
-                    child: Container(
-                      color: Colors.black,
-                    ),
+                  child: Container(
+                    color: Colors.black,
+                  ),
                 ),
                 Expanded(
                   flex: 1,
@@ -39,17 +36,15 @@ class FirstScreen extends StatelessWidget {
                     child: Column(
                       children: [
                         Expanded(
-                          flex: 4,
+                            flex: 4,
                             child: Container(
                               color: Colors.white,
-                            )
-                        ),
+                            )),
                         Expanded(
-                          flex: 6,
+                            flex: 6,
                             child: Container(
                               color: Colors.yellow,
-                            )
-                        ),
+                            )),
                       ],
                     ),
                   ),
@@ -57,22 +52,68 @@ class FirstScreen extends StatelessWidget {
               ],
             ),
           ),
-        ),  Expanded(
+        ),
+        Expanded(
           flex: 4,
-          child:  Container(
+          child: Container(
             color: Colors.blue,
           ),
         ),
-        // Container(
-        //   height: 100,
-        //   width: 100,
-        //   color: Colors.red,
-        // ),
-        // Container(
-        //   height: 100,
-        //   width: 100,
-        //   color: Colors.blue,
-        // ),
+      ],
+    );
+  }
+
+  Widget getCardView() {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        ListTile(
+          leading: Icon(Icons.import_contacts),
+          title: Text("jhsdc"),
+          subtitle: Text("hjbd"),
+        ),
+        Card(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+          elevation: 6.0,
+          color: Colors.yellow,
+          child: ListTile(
+            leading: Icon(Icons.import_contacts),
+            title: Text("jhsdc"),
+            subtitle: Text("hjbd"),
+          ),
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Card(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0)),
+              elevation: 6.0,
+              color: Colors.yellow,
+              child: Text("data"),
+            ),
+            Card(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0)),
+              elevation: 6.0,
+              color: Colors.yellow,
+              child: Text("data"),
+            ), Card(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0)),
+              elevation: 6.0,
+              color: Colors.yellow,
+              child: Text("data"),
+            ), Card(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0)),
+              elevation: 6.0,
+              color: Colors.yellow,
+              child: Text("data"),
+            ),
+          ],
+        ),
       ],
     );
   }
