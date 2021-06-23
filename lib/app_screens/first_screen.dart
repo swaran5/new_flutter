@@ -2,11 +2,17 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class FirstScreen extends StatelessWidget {
+  String name;
+
+  FirstScreen(this.name);
+
   @override
   Widget build(BuildContext context) {
-    return Material(
-      color: Colors.amber,
-      child: getWidget(),
+    return GestureDetector(
+        onTap: (){
+          Navigator.pop(context);
+        },
+        child: getWidget(),
     );
   }
 
@@ -79,7 +85,7 @@ class FirstScreen extends StatelessWidget {
           color: Colors.yellow,
           child: ListTile(
             leading: Icon(Icons.import_contacts),
-            title: Text("jhsdc"),
+            title: Text(name),
             subtitle: Text("hjbd"),
           ),
         ),

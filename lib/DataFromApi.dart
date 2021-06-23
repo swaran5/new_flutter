@@ -4,7 +4,9 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:new_flutter/app_screens/first_screen.dart';
 
+import 'app_screens/user_details.dart';
 import 'model/user_model.dart';
 
 class DataFromApi extends StatefulWidget{
@@ -105,7 +107,14 @@ class _DataFromAPIStake extends State{
   }
 
   Widget getItemView(int index) {
-    Widget itemView = Card(
+    Widget itemView = GestureDetector(
+      onTap: (){
+        Navigator.push(context, MaterialPageRoute(
+            builder: (context) => UserDetails(users[index].id.toString())
+        )
+        );
+      },
+      child: Card(
         shape:
         RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
         elevation: 6.0,
@@ -162,7 +171,9 @@ class _DataFromAPIStake extends State{
                   )),
             ),
           ],
-        ));
+        )
+      )
+    );
     return itemView;
   }
 }

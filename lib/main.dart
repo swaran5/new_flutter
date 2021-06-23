@@ -16,7 +16,7 @@ class MyFlutterApp extends StatelessWidget {
         title: "My Flutter App",
         home: Scaffold(
           appBar: AppBar(
-            title: Text("First Screen"),
+            title: Text("List of User"),
             backgroundColor: Colors.red,
           ),
           body: new DataFromApi()
