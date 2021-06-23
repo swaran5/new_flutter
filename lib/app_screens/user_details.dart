@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:new_flutter/model/single_user.dart';
 import 'package:new_flutter/model/user_model.dart';
 import 'package:http/http.dart' as http;
+import 'package:stacked/stacked.dart';
 
 class UserDetails extends StatefulWidget {
   String id;
@@ -96,7 +97,8 @@ class _UserDetails extends State<UserDetails> {
                 ),
               ),
             ),
-          ));
+          )
+        );
     } else {
       return Scaffold(
           appBar: AppBar(

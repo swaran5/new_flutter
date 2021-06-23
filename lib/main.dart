@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:new_flutter/app_screens/first_screen.dart';
 import 'package:new_flutter/app_screens/second_screen.dart';
-
 import 'DataFromApi.dart';
+import 'package:js/js.dart';
 
 void main() {
   runApp(new MyFlutterApp());
@@ -19,7 +18,7 @@ class MyFlutterApp extends StatelessWidget {
             title: Text("List of User"),
             backgroundColor: Colors.red,
           ),
-          body: new DataFromApi()
+          body: new HomePage()
         ));
   }
 }
