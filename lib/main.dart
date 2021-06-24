@@ -3,11 +3,14 @@ import 'package:new_flutter/app_screens/second_screen.dart';
 import 'DataFromApi.dart';
 import 'package:js/js.dart';
 
+import 'counter.dart';
+
 void main() {
   runApp(new MyFlutterApp());
 }
 
 class MyFlutterApp extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -19,6 +22,7 @@ class MyFlutterApp extends StatelessWidget {
             backgroundColor: Colors.red,
           ),
           body: new HomePage()
-        ));
+        )
+    );
   }
 }

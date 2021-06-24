@@ -8,11 +8,13 @@ import 'package:new_flutter/app_screens/first_screen.dart';
 import 'app_screens/user_details.dart';
 import 'model/user_model.dart';
 
+
 class DataFromApi extends StatefulWidget{
-  int id = 1;
 
   @override
-  _DataFromAPIStake createState() => _DataFromAPIStake();
+  _DataFromAPIStake createState() {
+    return _DataFromAPIStake();
+  }
 }
 
 class _DataFromAPIStake extends State{
@@ -63,6 +65,26 @@ class _DataFromAPIStake extends State{
       }
     });
   }
+
+  @override
+  void didChangeDependencies() {
+    // TODO: implement didChangeDependencies
+    super.didChangeDependencies();
+  }
+
+  @override
+  void deactivate() {
+    // TODO: implement deactivate
+    super.deactivate();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    var moun = mounted;
+  }
+
 
   @override
   Widget build(BuildContext context) {

@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:new_flutter/DataFromApi.dart';
+import 'package:new_flutter/counter.dart';
+import 'package:new_flutter/timer.dart';
+import 'package:new_flutter/viewmodel/timer_viewmodel.dart';
+import 'package:provider/provider.dart';
 import 'package:stacked/stacked.dart';
 
 class HomePage extends StatefulWidget {
@@ -14,14 +18,21 @@ class _HomePageState extends State<HomePage> {
   static List<Widget> _widgetOptions = <Widget>[
     DataFromApi(),
 
-    Text(
-      'Index 1: Add User',
-      style: optionStyle,
-    ),
+    // Text(
+    //   'Index 1: Add User',
+    //   style: optionStyle,
+    // ),
 
-    Text(
-      'Index 2: User DB',
-      style: optionStyle,
+    Counter(),
+
+    // Text(
+    //   'Index 2: User DB',
+    //   style: optionStyle,
+    // ),
+
+    ChangeNotifierProvider(
+      create: (context) => TimerViewmodel(),
+        child: TimerSeconds()
     ),
   ];
 
