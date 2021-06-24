@@ -52,47 +52,50 @@ class _UserDetails extends State<UserDetails> {
           body: Material(
             child: Align(
               alignment: Alignment.topCenter,
-              child: Card(
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(20.0)),
-                elevation: 6.0,
-                child: Padding(
-                  padding: EdgeInsets.all(30),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      SizedBox(
-                        height: 200,
-                        width: 200,
-                        child: Padding(
-                          padding: const EdgeInsets.fromLTRB(0,0,0,20.0),
-                          child: Image(
-                            fit: BoxFit.fill,
-                            image: NetworkImage(user.data.avatar),
+              child: Hero(
+                tag: user.data.avatar,
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(20.0)),
+                  elevation: 6.0,
+                  child: Padding(
+                    padding: EdgeInsets.all(30),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        SizedBox(
+                          height: 200,
+                          width: 200,
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(0,0,0,20.0),
+                            child: Image(
+                              fit: BoxFit.fill,
+                              image: NetworkImage(user.data.avatar),
+                            ),
                           ),
                         ),
-                      ),
-                      Text("First Name : "+user.data.firstName,
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 18.0,
-                            ),
-                      ),
-                      Text("Last Name : "+user.data.lastName,
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 18.0,
-                            ),
-                      ),
-                      Text("Email : "+user.data.email,
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 18.0,
-                            ),
-                      ),
-                    ],
+                        Text("First Name : "+user.data.firstName,
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18.0,
+                              ),
+                        ),
+                        Text("Last Name : "+user.data.lastName,
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18.0,
+                              ),
+                        ),
+                        Text("Email : "+user.data.email,
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 18.0,
+                              ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),

@@ -9,6 +9,8 @@ import 'app_screens/user_details.dart';
 import 'model/user_model.dart';
 
 class DataFromApi extends StatefulWidget{
+  int id = 1;
+
   @override
   _DataFromAPIStake createState() => _DataFromAPIStake();
 }
@@ -113,64 +115,67 @@ class _DataFromAPIStake extends State{
         )
         );
       },
-      child: Card(
-        shape:
-        RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
-        elevation: 6.0,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Expanded(
-              flex: 3,
-              child: Container(
-                height: 130,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20.0),
-                    topRight: Radius.circular(0),
-                    bottomLeft: Radius.circular(20.0),
-                    bottomRight: Radius.circular(0),
-                  ),
-                  child: Image(
-                    fit: BoxFit.fill,
-                    alignment: Alignment.centerLeft,
-                    image: NetworkImage(users[index].avatar),
+      child: Hero(
+        tag: users[index].avatar,
+        child: Card(
+          shape:
+          RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+          elevation: 6.0,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Expanded(
+                flex: 3,
+                child: Container(
+                  height: 130,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20.0),
+                      topRight: Radius.circular(0),
+                      bottomLeft: Radius.circular(20.0),
+                      bottomRight: Radius.circular(0),
+                    ),
+                    child: Image(
+                      fit: BoxFit.fill,
+                      alignment: Alignment.centerLeft,
+                      image: NetworkImage(users[index].avatar),
+                    ),
                   ),
                 ),
               ),
-            ),
-            Expanded(
-              flex: 7,
-              child: Container(
-                padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
+              Expanded(
+                flex: 7,
+                child: Container(
+                  padding: EdgeInsets.fromLTRB(10, 0, 0, 0),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
 
-                      Container(
-                          width: double.infinity,
-                          height: 65,
-                          child: Align(
-                              alignment: Alignment.centerLeft,
-                              child: Text(
-                                "First Name :${users[index].firstName}",
-                                style: TextStyle(color: Colors.black, fontSize: 25),
-                              ))),
-                      Container(
-                          width: double.infinity,
-                          height: 65,
-                          child: Align(
-                              alignment: Alignment.topLeft,
-                              child: Text(
-                                "Last Name :${users[index].lastName}",
-                                style: TextStyle(color: Colors.black, fontSize: 25),
-                              ))),
-                    ],
-                  )),
-            ),
-          ],
-        )
+                        Container(
+                            width: double.infinity,
+                            height: 65,
+                            child: Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  "First Name :${users[index].firstName}",
+                                  style: TextStyle(color: Colors.black, fontSize: 25),
+                                ))),
+                        Container(
+                            width: double.infinity,
+                            height: 65,
+                            child: Align(
+                                alignment: Alignment.topLeft,
+                                child: Text(
+                                  "Last Name :${users[index].lastName}",
+                                  style: TextStyle(color: Colors.black, fontSize: 25),
+                                ))),
+                      ],
+                    )),
+              ),
+            ],
+          )
+        ),
       )
     );
     return itemView;
