@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:new_flutter/app_screens/second_screen.dart';
 import 'DataFromApi.dart';
@@ -5,7 +6,9 @@ import 'package:js/js.dart';
 
 import 'counter.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(new MyFlutterApp());
 }
 
