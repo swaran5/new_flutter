@@ -1,3 +1,4 @@
+import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:flutter/material.dart';
 import 'package:new_flutter/DataFromApi.dart';
 import 'package:new_flutter/counter.dart';
@@ -15,6 +16,14 @@ class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
+
+  @override
+  void initState() {
+    super.initState();
+    this.initDynamicLinks();
+  }
+
+
   static List<Widget> _widgetOptions = <Widget>[
     DataFromApi(),
 
@@ -30,10 +39,12 @@ class _HomePageState extends State<HomePage> {
     //   style: optionStyle,
     // ),
 
-    ChangeNotifierProvider(
-      create: (context) => TimerViewmodel(),
-        child: TimerSeconds()
-    ),
+    // ChangeNotifierProvider(
+    //   create: (context) => TimerViewmodel(),
+    //     child: TimerSeconds()
+    // ),
+
+    Link(),
   ];
 
   void _onItemTapped(int index) {
@@ -68,5 +79,30 @@ class _HomePageState extends State<HomePage> {
         onTap: _onItemTapped,
       ),
     );
+  }
+
+  Future<void> initDynamicLinks() async {
+    FirebaseDynamicLinks.instance.onLink(
+        onSuccess: (PendingDynamicLinkData? dynamicLink) async {
+          final Uri? deepLink = dynamicLink?.link;
+
+          if (deepLink != null) {
+            // ignore: unawaited_futures
+            Navigator.pushNamed(context, deepLink.path);
+          }
+        }, onError: (OnLinkErrorException e) async {
+      print('onLinkError');
+      print(e.message);
+    });
+
+    final PendingDynamicLinkData? data =
+    await FirebaseDynamicLinks.instance.getInitialLink();
+    final Uri? deepLink = data?.link;
+
+    if (deepLink != null) {
+      // ignore: unawaited_futures
+      Navigator.pushNamed(context, deepLink.path);
+
+    }
   }
 }
