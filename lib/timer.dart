@@ -1,4 +1,3 @@
-
 import 'dart:async';
 import 'dart:developer';
 
@@ -10,7 +9,6 @@ import 'package:flutter/services.dart';
 import 'package:new_flutter/viewmodel/timer_viewmodel.dart';
 import 'package:provider/provider.dart';
 import 'package:share/share.dart';
-
 
 // class TimerSeconds extends StatefulWidget {
 //
@@ -122,8 +120,6 @@ import 'package:share/share.dart';
 //   }
 // }
 
-
-
 class Link extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _LinkState();
@@ -137,6 +133,8 @@ class _LinkState extends State<Link> {
       "app. Make sure this isn't being tested on iOS simulator and iOS xcode "
       'is properly setup. Look at firebase_dynamic_links/README.md for more '
       'details.';
+  final myController = TextEditingController();
+
 
   @override
   void initState() {
@@ -147,41 +145,38 @@ class _LinkState extends State<Link> {
   Future<void> initDynamicLinks() async {
     FirebaseDynamicLinks.instance.onLink(
         onSuccess: (PendingDynamicLinkData? dynamicLink) async {
-          final Uri? deepLink = dynamicLink?.link;
+      final Uri? deepLink = dynamicLink?.link;
 
-          if (deepLink != null) {
-            // ignore: unawaited_futures
-            Navigator.pushNamed(context, deepLink.path);
-          }
-        }, onError: (OnLinkErrorException e) async {
+      if (deepLink != null) {
+        // ignore: unawaited_futures
+        Navigator.pushNamed(context, deepLink.path);
+      }
+    }, onError: (OnLinkErrorException e) async {
       print('onLinkError');
       print(e.message);
     });
 
     final PendingDynamicLinkData? data =
-    await FirebaseDynamicLinks.instance.getInitialLink();
+        await FirebaseDynamicLinks.instance.getInitialLink();
     final Uri? deepLink = data?.link;
 
     if (deepLink != null) {
-
       // ignore: unawaited_futures
       // Navigator.pushNamed(context, deepLink.path);
 
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text(deepLink.path.toString())
-        )
-      );
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text(deepLink.path.toString())));
     }
   }
 
-  Future<void> _createDynamicLink(bool short) async {
+  Future<void> _createDynamicLink(bool short, String refCode) async {
     setState(() {
       _isCreatingLink = true;
     });
 
     final DynamicLinkParameters parameters = DynamicLinkParameters(
-      uriPrefix: 'https://newflutter.page.link',
-      link: Uri.parse('https://gobumpr.com/helloworld'),
+      uriPrefix: 'https://newflutter.page.link/',
+      link: Uri.parse('https://example.com/$refCode'),
       androidParameters: AndroidParameters(
         packageName: 'com.example.new_flutter',
         minimumVersion: 0,
@@ -193,9 +188,10 @@ class _LinkState extends State<Link> {
         bundleId: 'com.example.newFlutter',
         minimumVersion: '0',
       ),
-      socialMetaTagParameters:  SocialMetaTagParameters(
+      socialMetaTagParameters: SocialMetaTagParameters(
         title: 'Dynamic Link Title',
-        imageUrl: Uri.parse("https://d1qb2nb5cznatu.cloudfront.net/startups/i/865292-338c986a9845865043e2f05c56de3c59-medium_jpg.jpg?buster=1445611976"),
+        imageUrl: Uri.parse(
+            "https://d1qb2nb5cznatu.cloudfront.net/startups/i/865292-338c986a9845865043e2f05c56de3c59-medium_jpg.jpg?buster=1445611976"),
         description: 'This is the description of the Dynamic Link',
       ),
     );
@@ -226,29 +222,33 @@ class _LinkState extends State<Link> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                    ElevatedButton(
-                      onPressed: !_isCreatingLink
-                          ? () => _createDynamicLink(false)
-                          : null,
-                      child: const Text('Get Long Link'),
-                    ),
-                    ElevatedButton(
-                      onPressed: !_isCreatingLink
-                          ? () => _createDynamicLink(true)
-                          : null,
-                      child: const Text('Get Short Link'),
-                    ),
-
+                Padding(
+                  padding: EdgeInsets.all(20),
+                  child: TextField(
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        hintText: 'Enter your referal code'),
+                    controller: myController,
+                  ),
+                ),
                 ElevatedButton(
-                  onPressed: () => {
-                          Share.share(_linkMessage!)
-                  },
+                  onPressed:
+                      !_isCreatingLink ? () => _createDynamicLink(false , myController.text) : null,
+                  child: const Text('Get Long Link'),
+                ),
+                ElevatedButton(
+                  onPressed:
+                      !_isCreatingLink ? () => _createDynamicLink(true , myController.text) : null,
+                  child: const Text('Get Short Link'),
+                ),
+                ElevatedButton(
+                  onPressed: () => {Share.share(_linkMessage!)},
                   child: const Text('Share Short Link'),
                 ),
                 InkWell(
                   onTap: () async {
                     if (_linkMessage != null) {
-                        // print(_linkMessage);
+                      // print(_linkMessage);
                     }
                   },
                   onLongPress: () {
