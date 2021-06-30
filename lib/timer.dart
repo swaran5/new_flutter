@@ -175,8 +175,8 @@ class _LinkState extends State<Link> {
     });
 
     final DynamicLinkParameters parameters = DynamicLinkParameters(
-      uriPrefix: 'https://newflutter.page.link/',
-      link: Uri.parse('https://example.com/$refCode'),
+      uriPrefix: 'https://newflutter.page.link',
+      link: Uri.parse('https://gobumpr.com/$refCode'),
       androidParameters: AndroidParameters(
         packageName: 'com.example.new_flutter',
         minimumVersion: 0,

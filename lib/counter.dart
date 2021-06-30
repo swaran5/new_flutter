@@ -32,7 +32,9 @@ class _CounterState extends State<Counter> {
   Widget build(BuildContext context) {
     return ViewModelBuilder<CounterViewModel>.reactive(
         builder: (context, viewmodel, child) => Scaffold(
-          appBar: AppBar(),
+          appBar: AppBar(
+            title: Text("Counter"),
+          ),
           floatingActionButton: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [

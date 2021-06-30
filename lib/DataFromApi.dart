@@ -90,7 +90,12 @@ class _DataFromAPIStake extends State{
   Widget build(BuildContext context) {
     return Material(
         color: Colors.amber,
-        child: getListView(),
+        child: Scaffold(
+            appBar: AppBar(
+              title: Text("List of Users"),
+              backgroundColor: Colors.red,
+            ),
+            body: getListView()),
         );
   }
 
