@@ -91,10 +91,7 @@ class _DataFromAPIStake extends State{
     return Material(
         color: Colors.amber,
         child: Scaffold(
-            appBar: AppBar(
-              title: Text("List of Users"),
-              backgroundColor: Colors.red,
-            ),
+            backgroundColor: Colors.amber,
             body: getListView()),
         );
   }

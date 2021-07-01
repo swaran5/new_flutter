@@ -33,6 +33,7 @@ class _CounterState extends State<Counter> {
     return ViewModelBuilder<CounterViewModel>.reactive(
         builder: (context, viewmodel, child) => Scaffold(
           appBar: AppBar(
+            backgroundColor: Colors.blue.withOpacity(0),
             title: Text("Counter"),
           ),
           floatingActionButton: Column(

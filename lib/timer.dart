@@ -215,6 +215,7 @@ class _LinkState extends State<Link> {
     return Material(
       child: Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.blue.withOpacity(0),
           title: const Text('Dynamic Links'),
         ),
         body: Builder(builder: (BuildContext context) {

@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:new_flutter/app_screens/dashboard.dart';
 import 'package:new_flutter/app_screens/second_screen.dart';
 import 'package:new_flutter/timer.dart';
 import 'DataFromApi.dart';
@@ -23,16 +24,9 @@ class MyFlutterApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: "My Flutter App",
         routes: <String, WidgetBuilder>{
-          '/': (BuildContext context) => HomePage(),
+          '/': (BuildContext context) => MenuDashBoard(),
           '/helloworld': (BuildContext context) => Link(),
         },
-        // home: Scaffold(
-        //   appBar: AppBar(
-        //     title: Text("List of User"),
-        //     backgroundColor: Colors.red,
-        //   ),
-        //   body: new HomePage()
-        // )
     );
   }
 }
